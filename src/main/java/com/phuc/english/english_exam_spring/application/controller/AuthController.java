@@ -5,18 +5,20 @@ import com.phuc.english.english_exam_spring.domain.dtos.user.UserLoginRequest;
 import com.phuc.english.english_exam_spring.domain.services.auth.IAuthService;
 import com.phuc.english.english_exam_spring.infrastructure.datas.entites.UserEntity;
 import com.phuc.english.english_exam_spring.infrastructure.datas.repository.auth.IAuthRepository;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController("/uses")
+@Slf4j
+@RestController
+@AllArgsConstructor
+@RequestMapping("/auth")
 public class AuthController {
 
     @Autowired

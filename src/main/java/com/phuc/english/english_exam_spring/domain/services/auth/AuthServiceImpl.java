@@ -21,15 +21,15 @@ public class AuthServiceImpl implements IAuthService {
     @Autowired
     private final IAuthRepository authRepository;
 
-
-    @Value("${security.jwt.secret-key}")
-    private String secretKey;
-
-    @Value("${security.jwt.expiration}")
-    private long jwtExpiration;
-
-    @Value("${security.jwt.refresh-token.expiration}")
-    private long refreshExpiration;
+//
+//    @Value("${security.jwt.secret-key}")
+//    private String secretKey;
+//
+//    @Value("${security.jwt.expiration}")
+//    private long jwtExpiration;
+//
+//    @Value("${security.jwt.refresh-token.expiration}")
+//    private long refreshExpiration;
 
     @Override
     public JWTResponse register(RegisterUserRequest registerUserRequest) {
