@@ -8,7 +8,7 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     database: mysql
     open-in-view: true
-    generate-ddl: true
+    generate-ddl: false
     hibernate:
       ddl-auto: update
       naming:

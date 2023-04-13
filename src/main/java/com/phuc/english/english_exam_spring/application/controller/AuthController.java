@@ -36,7 +36,7 @@ public class AuthController {
 //        return new ResponseEntity<>(jwtResponse, httpHeaders, HttpStatus.OK);
 //    }
 
-    @GetMapping("/all")
+    @GetMapping("/users")
     public ResponseEntity<Object> getUsers(){
         List<UserEntity> users = authRepository.findAll();
         return ResponseEntity.ok(BaseResponse.success(users));

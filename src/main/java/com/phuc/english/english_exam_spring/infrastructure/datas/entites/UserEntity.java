@@ -1,16 +1,14 @@
 package com.phuc.english.english_exam_spring.infrastructure.datas.entites;
 
-
-import com.phuc.english.english_exam_spring.utils.UserRole;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Table(name = "users")
 @Data
@@ -38,5 +36,10 @@ public class UserEntity extends BaseEntity {
     private Date dateOfBirth;
     @Column(name = "role")
     private int role;
+
+
+//    @OneToMany
+//    @JoinColumn(name = "id")
+//    private List<ExamEntity> exams;
 
 }
