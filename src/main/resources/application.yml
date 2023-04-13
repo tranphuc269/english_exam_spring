@@ -23,10 +23,10 @@ spring:
     password: admin
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/shop_base?useUnicode=true
-
-security:
-  jwt:
-    secret-key: tranphuc
-    refresh-token:
-      expiration: '120000'
-    expiration: '60000'
+#
+#security:
+#  jwt:
+#    secret-key: Tranvanphuc123456789Tranvanphuc123456789Tranvanphuc123456789Tranvanphuc123456789
+#    refresh-token:
+#      expiration: '120000'
+#    expiration: '60000'

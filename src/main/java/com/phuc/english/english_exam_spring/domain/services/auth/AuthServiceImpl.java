@@ -9,10 +9,6 @@ import com.phuc.english.english_exam_spring.infrastructure.datas.repository.auth
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Calendar;
@@ -21,15 +17,13 @@ import java.util.Date;
 @Service
 @RequiredArgsConstructor
 public class AuthServiceImpl implements IAuthService {
-    @Autowired
-    private final JwtTokenService jwtTokenService;
-    @Autowired
-    private final AuthenticationManager authenticationManager;
-    @Autowired
-    private final PasswordEncoder passwordEncoder;
 
     @Autowired
     private final IAuthRepository authRepository;
+
+
+    @Value("${security.jwt.secret-key}")
+    private String secretKey;
 
     @Value("${security.jwt.expiration}")
     private long jwtExpiration;
@@ -44,20 +38,21 @@ public class AuthServiceImpl implements IAuthService {
 
     @Override
     public JWTResponse login(UserLoginRequest loginRequest) {
-        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getEmail(),
-                loginRequest.getPassword()));
-        UserEntity user = authRepository.findByEmail(loginRequest.getEmail()).orElseThrow(() ->
-                new UsernameNotFoundException("User not found"));
-        String jwtToken = jwtTokenService.generateToken(user);
-        String refreshToken = jwtTokenService.generateRefresh(user);
-        Calendar calendar = Calendar.getInstance();
-        calendar.add(Calendar.SECOND, (int) jwtExpiration);
-        return JWTResponse
-                .builder()
-                .expiresIn(String.valueOf(calendar.getTime().getTime()))
-                .accessToken(jwtToken)
-                .refreshToken(refreshToken)
-                .build();
+////        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getEmail(),
+////                loginRequest.getPassword()));
+//        UserEntity user = authRepository.findByEmail(loginRequest.getEmail()).orElseThrow(() ->
+//                new UsernameNotFoundException("User not found"));
+//        String jwtToken = jwtTokenService.generateToken(user);
+//        String refreshToken = jwtTokenService.generateRefresh(user);
+//        Calendar calendar = Calendar.getInstance();
+//        calendar.add(Calendar.SECOND, (int) jwtExpiration);
+//        return JWTResponse
+//                .builder()
+//                .expiresIn(String.valueOf(calendar.getTime().getTime()))
+//                .accessToken(jwtToken)
+//                .refreshToken(refreshToken)
+//                .build();
+        return null;
     }
 
     @Override

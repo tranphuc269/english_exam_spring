@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RestController("/api/auth")
+@RestController("/uses")
 public class AuthController {
 
     @Autowired
@@ -24,19 +24,19 @@ public class AuthController {
 
     @Autowired
     private IAuthService authService;
+//
+//    @PostMapping("/login")
+//    public ResponseEntity<Object> login(@RequestBody UserLoginRequest userRequest) {
+//        System.out.println("Zo login");
+//        JWTResponse jwtResponse = authService.login(userRequest);
+//        HttpHeaders httpHeaders = new HttpHeaders();
+////        httpHeaders.add("Set-Cookie", "refreshToken=" + jwtResponse.getRefreshToken());
+//        return new ResponseEntity<>(jwtResponse, httpHeaders, HttpStatus.OK);
+//    }
 
-    @PostMapping("/login")
-    public ResponseEntity<Object> login(@RequestBody UserLoginRequest userRequest) {
-        JWTResponse jwtResponse = authService.login(userRequest);
-        HttpHeaders httpHeaders = new HttpHeaders();
-//        httpHeaders.add("Set-Cookie", "refreshToken=" + jwtResponse.getRefreshToken());
-        return new ResponseEntity<>(jwtResponse, httpHeaders, HttpStatus.OK);
-    }
-
-    @Autowired
-    @GetMapping("")
-    public Object getUsers(){
+    @GetMapping("/all")
+    public ResponseEntity<Object> getUsers(){
         List<UserEntity> users = authRepository.findAll();
-        return BaseResponse.success(users);
+        return ResponseEntity.ok(BaseResponse.success(users));
     }
 }
