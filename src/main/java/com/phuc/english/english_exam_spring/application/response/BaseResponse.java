@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
 
 @Data
 @Getter
@@ -29,6 +31,12 @@ public class BaseResponse {
                 .builder()
                 .message(message)
                 .build();
+    }
+
+    public static void notFound() {
+        throw new ResponseStatusException(
+                HttpStatus.NOT_FOUND, "entity not found"
+        );
     }
 
 }

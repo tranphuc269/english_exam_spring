@@ -14,8 +14,15 @@ import java.util.List;
 @Builder
 @Getter
 @Setter
-public class ExamDetailResponse extends DataResponse{
+public class ExamDetailResponse{
+    @JsonProperty("id")
     private Long id;
+
+    @JsonProperty("created_at")
+    private Date createdAt;
+
+    @JsonProperty("updated_at")
+    private Date updatedAt;
 
     @JsonProperty("exam_name")
     private String examName;
